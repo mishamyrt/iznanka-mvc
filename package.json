@@ -1,6 +1,6 @@
 {
-  "name": "iznanka",
-  "version": "4.0.0",
+  "name": "iznanka-mvc",
+  "version": "1.0.0",
   "description": "blabla",
   "main": "index.js",
   "scripts": {

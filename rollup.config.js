@@ -13,5 +13,4 @@ export default {
         resolve(),
         commonjs()
     ],
-    // external: [ 'balajs' ]
 }

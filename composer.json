@@ -1,5 +1,6 @@
 {
-    "name": "iznanka",
+    "name": "iznanka-mvc",
+    "version": "1.0",
     "description": "Enter a description for your project",
     "require": {
         "twig/twig": "~2.0"
