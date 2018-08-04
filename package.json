@@ -1,0 +1,27 @@
+{
+  "name": "iznanka",
+  "version": "4.0.0",
+  "description": "blabla",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "npx postcss Assets/styles.css -o public/css/styles.css",
+    "build-js": "npx rollup -c",
+    "build": "npm run build-css && npm run build-js",
+    "test": "npm run build"
+  },
+  "author": "mishamyrt",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^9.0.1",
+    "normalize.css": "^8.0.0",
+    "postcss": "^7.0.1",
+    "postcss-cli": "^6.0.0",
+    "postcss-csso": "^3.0.0",
+    "postcss-import": "^11.1.0",
+    "postcss-preset-env": "^5.3.0",
+    "rollup": "^0.63.5",
+    "rollup-plugin-commonjs": "^9.1.4",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-terser": "^1.0.1"
+  }
+}

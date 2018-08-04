@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title | default("Изнанка") }}</title>
+    <link rel="icon" type="image/png" href="{{ anticache('/img/favicon.png') }}
+    ">
+    <link rel="stylesheet" type="text/css" href="{{ anticache('/css/styles.css') }}"/>
+    <script rel="subresource" type="text/javascript" src="{{ anticache('/js/app.js') }}"></script>
+    <meta name="theme-color" content="#198c81">
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
