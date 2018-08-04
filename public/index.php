@@ -1,6 +1,8 @@
 <?php
 $dir = dirname(__DIR__);
+
 require $dir . '/vendor/autoload.php';
+require $dir . '/Core/core.php';
 
 error_reporting(E_ALL);
 set_error_handler('Core\Error::errorHandler');
