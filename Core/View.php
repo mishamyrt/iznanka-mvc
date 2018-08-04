@@ -31,7 +31,7 @@ class View
             $anticache = new \Twig_SimpleFunction(
                 'anticache', function ($url) {
                     $path = dirname(__DIR__) . '/public/' . Tools::escapeFilePath($url);
-                    return file_exists($path) ? $url . '?' . filemtime($path) : $url;
+                    return file_exists($path) ? $url . '?' . filemtime($path) : $path;
                 }
             );
             $twig->addFunction($anticache);
