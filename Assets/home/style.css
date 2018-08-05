@@ -17,6 +17,17 @@
     font-size: 3vw;
 }
 
+.hello-message::selection,
+.hello-message br:r:selection,  {
+    background-color: #198c81;
+    color: #fff;
+}
+
+.hello-file::selection {
+    background-color: #198c81;
+    color: #47ffed;
+}
+
 @media (max-width: 1020px) {
     .hello-message {
         max-width: 470px;
