@@ -9,6 +9,15 @@ namespace Core;
  */
 class View
 {
+    public static function display(string $template, array $args = []): void
+    {
+        echo self::render($template, $args);
+    }
+
+    public static function escapePath(string $path): string {
+        return substr($path, 0, 1) === '/' ? substr($path, 1) : $path;
+    }
+    
     /**
      * Render a view template using Twig
      *
@@ -17,11 +26,7 @@ class View
      *
      * @return void
      */
-    public static function display($template, $args = [])
-    {
-        echo self::render($template, $args);
-    }
-    public static function render($template, $args = [])
+    public static function render(string $template, array $args = []): void
     {
         static $twig = null;
 
@@ -30,7 +35,7 @@ class View
             $twig = new \Twig_Environment($loader);
             $anticache = new \Twig_SimpleFunction(
                 'anticache', function ($url) {
-                    $path = dirname(__DIR__) . '/public/' . Tools::escapeFilePath($url);
+                    $path = dirname(__DIR__) . '/public/' . self::escapePath($url);
                     return file_exists($path) ? $url . '?' . filemtime($path) : $url;
                 }
             );

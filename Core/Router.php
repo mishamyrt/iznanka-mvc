@@ -30,20 +30,12 @@ class Router
      *
      * @return void
      */
-    public function add($route, $params = [])
+    public function add(string $route, array $params = []): void
     {
-        // Convert the route to a regular expression: escape forward slashes
         $route = preg_replace('/\//', '\\/', $route);
-
-        // Convert variables e.g. {controller}
         $route = preg_replace('/\{([a-z-]+)\}/', '(?P<\1>[a-z-]+)', $route);
-
-        // Convert variables with custom regular expressions e.g. {id:\d+}
         $route = preg_replace('/\{([a-z-]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
-
-        // Add start and end delimiters, and case insensitive flag
         $route = '/^' . $route . '$/i';
-
         $this->routes[$route] = $params;
     }
 
@@ -52,7 +44,7 @@ class Router
      *
      * @return array
      */
-    public function getRoutes()
+    public function getRoutes(): array
     {
         return $this->routes;
     }
@@ -65,7 +57,7 @@ class Router
      *
      * @return boolean  true if a match found, false otherwise
      */
-    public function match($url)
+    public function match(string $url): bool
     {
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
@@ -89,7 +81,7 @@ class Router
      *
      * @return array
      */
-    public function getParams()
+    public function getParams(): array
     {
         return $this->params;
     }
@@ -98,11 +90,9 @@ class Router
      * Dispatch the route, creating the controller object and running the
      * action method
      *
-     * @param string $url The route URL
-     *
      * @return void
      */
-    public function dispatch()
+    public function dispatch(): void
     {
         $url = $_SERVER['REQUEST_URI'];
         $url = substr($url, -1) === '/' ? substr($url, 0, -1) : $url;
@@ -141,7 +131,7 @@ class Router
      *
      * @return string
      */
-    protected function convertToStudlyCaps($string)
+    protected function convertToStudlyCaps(string $string): string
     {
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
     }
@@ -154,7 +144,7 @@ class Router
      *
      * @return string
      */
-    protected function convertToCamelCase($string)
+    protected function convertToCamelCase(string $string): string
     {
         return lcfirst($this->convertToStudlyCaps($string));
     }
@@ -182,7 +172,7 @@ class Router
      *
      * @return string The URL with the query string variables removed
      */
-    protected function removeQueryStringVariables($url)
+    protected function removeQueryStringVariables(string $url): string
     {
         if ($url != '') {
             $parts = explode('&', $url, 2);
@@ -203,7 +193,7 @@ class Router
      *
      * @return string The request URL
      */
-    protected function getNamespace()
+    protected function getNamespace(): string
     {
         $namespace = 'App\Controllers\\';
 

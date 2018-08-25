@@ -28,6 +28,8 @@ class Config
      */
     const DB_USER = 'your-database-user';
 
+    const DB_PREFIX = '';
+
     /**
      * Database password
      * @var string

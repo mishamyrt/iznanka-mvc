@@ -18,7 +18,7 @@ abstract class Model
      *
      * @return mixed
      */
-    protected static function getDB()
+    protected static function getDB(): PDO
     {
         static $db = null;
 
